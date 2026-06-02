@@ -1,4 +1,4 @@
-name: Build Chess Hub
+name: Build and Auto-Commit Chess Hub
 
 on:
   push:
@@ -22,3 +22,11 @@ jobs:
 
       - name: Build Project
         run: npm run build
+
+      - name: Commit and Push Built Files
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions@github.com"
+          git add -f dist/
+          git diff-index --quiet HEAD || git commit -m "Automated build: update dist folder"
+          git push origin main
