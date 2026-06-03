@@ -1,11 +1,11 @@
-name: Build and Auto-Commit Chess Hub
+name: Build and Deploy Chess Hub
 
 on:
   push:
     branches: [ main ]
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -23,42 +23,34 @@ jobs:
       - name: Build Project
         run: npm run build
 
-      - name: Commit and Push Built Files
+      - name: Upload dist files to public_html
         run: |
-          git config --global user.name "GitHub Actions Bot"
-          git config --global user.email "actions@github.com"
-          git add -f dist/
-          git diff-index --quiet HEAD || git commit -m "Automated build: update dist folder"
-          git push origin main
+          find dist -type d | while read dirpath; do
+            relative="${dirpath#dist}"
+            remote_path="/home/gochess/public_html${relative}"
+            encoded_parent=$(python3 -c "import urllib.parse; print(urllib.parse.quote('$(dirname "$remote_path")'))")
+            encoded_name=$(python3 -c "import urllib.parse; print(urllib.parse.quote('$(basename "$remote_path")'))")
+            curl -s -X POST \
+              -H "Authorization: cpanel gochess:${{ secrets.CPANEL_API_TOKEN }}" \
+              "https://gochess.in:2083/execute/Fileman/mkdir?path=${encoded_parent}&name=${encoded_name}" > /dev/null
+          done
 
-      - name: Wait for GitHub to sync
-        run: sleep 5
+          find dist -type f | while read filepath; do
+            relative="${filepath#dist/}"
+            remote_dir="/home/gochess/public_html/$(dirname "$relative")"
+            echo "Uploading $filepath → $remote_dir"
+            RESPONSE=$(curl -s -X POST \
+              -H "Authorization: cpanel gochess:${{ secrets.CPANEL_API_TOKEN }}" \
+              -F "dir=${remote_dir}" \
+              -F "file-1=@${filepath}" \
+              "https://gochess.in:2083/execute/Fileman/upload_files")
+            echo "$RESPONSE"
+          done
 
-      - name: Force Update cPanel Repository
+      - name: Verify deployment
         run: |
-          echo "Step 1: Forcing repository pull from GitHub"
-          RESPONSE=$(curl -s -w "\n%{http_code}" \
-            -X POST \
+          RESPONSE=$(curl -s \
             -H "Authorization: cpanel gochess:${{ secrets.CPANEL_API_TOKEN }}" \
-            "https://gochess.in:2083/execute/VersionControl/update?repository_root=/home/gochess/gochess_repo&force_update=1")
-          HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
-          echo "Update HTTP Status: $HTTP_CODE"
-          [ "$HTTP_CODE" != "200" ] && echo "⚠️ Update failed" && exit 1
-          echo "✅ Repository update triggered"
-
-      - name: Wait for repo update to complete
-        run: sleep 25
-
-      - name: Deploy from Updated Repository
-        run: |
-          echo "Step 2: Triggering deployment"
-          RESPONSE=$(curl -s -w "\n%{http_code}" \
-            -X POST \
-            -H "Authorization: cpanel gochess:${{ secrets.CPANEL_API_TOKEN }}" \
-            "https://gochess.in:2083/execute/VersionControlDeployment/create?repository_root=/home/gochess/gochess_repo")
-          HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
-          BODY=$(echo "$RESPONSE" | head -n-1)
-          echo "Deploy HTTP Status: $HTTP_CODE"
-          echo "Response: $BODY"
-          [ "$HTTP_CODE" != "200" ] && echo "❌ Deploy failed" && exit 1
-          echo "✅ Deployment triggered successfully"
+            "https://gochess.in:2083/execute/Fileman/list?dir=/home/gochess/public_html")
+          echo "public_html contents: $RESPONSE"
+          echo "✅ Deployment complete"
