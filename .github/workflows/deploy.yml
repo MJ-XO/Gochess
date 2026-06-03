@@ -30,3 +30,10 @@ jobs:
           git add -f dist/
           git diff-index --quiet HEAD || git commit -m "Automated build: update dist folder"
           git push origin main
+
+      - name: Trigger cPanel Deployment
+        run: |
+          curl -H "Authorization: cpanel gochess:${{ secrets.CPANEL_API_TOKEN }}" \
+          "https://gochess.in:2083/execute/VersionControl/update?repository_root=gochess-repo" \
+          && curl -H "Authorization: cpanel gochess:${{ secrets.CPANEL_API_TOKEN }}" \
+          "https://gochess.in:2083/execute/VersionControl/deploy?repository_root=gochess-repo"
