@@ -28,7 +28,7 @@ const About = () => {
               <div>
                 <h2 className="text-2xl font-bold mb-4">Our Mission</h2>
                 <p className="text-gray-700 mb-4">
-                  At GoChess, our mission is to democratize access to quality chess education. We believe that chess is not just a game but a powerful tool for developing critical thinking, strategic planning, and mental discipline.
+                  At GoChess institution, our mission is to democratize access to quality chess education. We believe that chess is not just a game but a powerful tool for developing critical thinking, strategic planning, and mental discipline.
                 </p>
                 <p className="text-gray-700">
                   We aim to create a nurturing environment where students of all levels can learn, practice, and excel in chess under the guidance of verified coaches who are passionate about the game and skilled in teaching.
