@@ -1,8 +1,4 @@
 ---
 deployment:
   tasks:
-    - cd /home/gochess/gochess_repo
-    - git fetch origin
-    - git reset --hard origin/main
-    - /bin/cp -R dist/* /home/gochess/public_html/
-    - echo "Deployment complete at $(date)"
+    - /bin/cp -Rf /home/gochess/gochess_repo/dist/. /home/gochess/public_html/
