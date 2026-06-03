@@ -1,4 +1,7 @@
 ---
 deployment:
   tasks:
+    - git -C /home/gochess/gochess_repo fetch origin main
+    - git -C /home/gochess/gochess_repo reset --hard origin/main
+    - git -C /home/gochess/gochess_repo clean -fd
     - /bin/cp -Rf /home/gochess/gochess_repo/dist/. /home/gochess/public_html/
