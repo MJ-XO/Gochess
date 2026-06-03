@@ -1,11 +1,17 @@
 ---
 deployment:
   tasks:
+    - export REPO_PATH=/home/gochess/gochess_repo
     - export DEPLOYPATH=/home/gochess/public_html
-    - echo "Starting deployment to $DEPLOYPATH..."
-    - echo "Removing old files..."
+    - echo "Step 1: Updating repository from GitHub..."
+    - cd $REPO_PATH && git pull origin main --force
+    - echo "Step 2: Repository updated. Current commit:"
+    - cd $REPO_PATH && git log -1 --oneline
+    - echo "Step 3: Clearing old deployment files..."
     - /bin/rm -rf $DEPLOYPATH/*
-    - echo "Copying new build files..."
-    - /bin/cp -R dist/* $DEPLOYPATH/
-    - echo "Deployment complete! Files deployed to $DEPLOYPATH"
-    - ls -la $DEPLOYPATH/ | head -20
+    - echo "Step 4: Deploying fresh files from repository..."
+    - /bin/cp -R $REPO_PATH/dist/* $DEPLOYPATH/
+    - echo "Step 5: Deployment complete!"
+    - echo "Files deployed from: $REPO_PATH/dist/"
+    - echo "Deployed to: $DEPLOYPATH/"
+    - ls -la $DEPLOYPATH | head -20
