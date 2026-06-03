@@ -31,24 +31,15 @@ jobs:
           git diff-index --quiet HEAD || git commit -m "Automated build: update dist folder"
           git push origin main
 
-      - name: Wait for Sync
-        run: sleep 3
-
-      - name: Trigger cPanel Repository Update & Deploy
+      - name: Deploy Built Files
         run: |
-          echo "🔄 Step 1: Force update repository..."
-          curl -v \
-            -H "Authorization: cpanel gochess:${{ secrets.CPANEL_API_TOKEN }}" \
-            "https://gochess.in:2083/execute/VersionControl/update?repository_root=/home/gochess/gochess_repo&force_update=1"
+          echo "📦 Uploading dist/ to cPanel via SCP..."
+          mkdir -p ~/.ssh
+          echo "${{ secrets.CPANEL_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H gochess.in >> ~/.ssh/known_hosts 2>/dev/null
           
-          echo ""
-          echo "⏳ Waiting for repository update..."
-          sleep 3
+          echo "🚀 Copying files to public_html..."
+          scp -i ~/.ssh/deploy_key -r dist/* gochess@gochess.in:/home/gochess/public_html/
           
-          echo "🚀 Step 2: Trigger deployment..."
-          curl -v \
-            -H "Authorization: cpanel gochess:${{ secrets.CPANEL_API_TOKEN }}" \
-            "https://gochess.in:2083/execute/VersionControlDeployment/create?repository_root=/home/gochess/gochess_repo"
-          
-          echo ""
-          echo "✅ Deployment triggered!"
+          echo "✅ Deployment complete!"
