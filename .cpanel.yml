@@ -2,5 +2,10 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/gochess/public_html
+    - echo "Starting deployment to $DEPLOYPATH..."
+    - echo "Removing old files..."
     - /bin/rm -rf $DEPLOYPATH/*
+    - echo "Copying new build files..."
     - /bin/cp -R dist/* $DEPLOYPATH/
+    - echo "Deployment complete! Files deployed to $DEPLOYPATH"
+    - ls -la $DEPLOYPATH/ | head -20
