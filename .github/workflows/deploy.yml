@@ -34,6 +34,6 @@ jobs:
       - name: Trigger cPanel Deployment
         run: |
           curl -H "Authorization: cpanel gochess:${{ secrets.CPANEL_API_TOKEN }}" \
-          "https://gochess.in:2083/execute/VersionControl/update?repository_root=gochess-repo" \
+          "https://gochess.in:2083/execute/VersionControl/update?repository_root=/home/gochess/gochess_repo" \
           && curl -H "Authorization: cpanel gochess:${{ secrets.CPANEL_API_TOKEN }}" \
-          "https://gochess.in:2083/execute/VersionControl/deploy?repository_root=gochess-repo"
+          "https://gochess.in:2083/execute/VersionControl/deploy_head?repository_root=/home/gochess/gochess_repo"
