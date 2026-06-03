@@ -1,4 +1,6 @@
 ---
 deployment:
   tasks:
-    - echo "Deployment handled by GitHub Actions"
+    - /usr/local/cpanel/3rdparty/bin/git -C /home/gochess/gochess_repo checkout -- .
+    - /usr/local/cpanel/3rdparty/bin/git -C /home/gochess/gochess_repo pull origin main
+    - /bin/cp -Rf /home/gochess/gochess_repo/dist/. /home/gochess/public_html/
