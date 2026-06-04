@@ -64,10 +64,6 @@ const StrategicAdvantage = () => {
               <blockquote className="text-xl md:text-2xl font-semibold italic text-gray-800">
                 "Chess is not just a game. It's a way of learning how to think. The skills developed on the board last a lifetime."
               </blockquote>
-              <div className="mt-6">
-                <p className="font-bold">Vikram Sharma</p>
-                <p className="text-sm text-chess-primary">FIDE Master & Corporate Strategy Consultant</p>
-              </div>
             </div>
             <div className="absolute top-4 right-4 w-full h-full bg-chess-secondary/20 rounded-lg -z-0"></div>
           </div>
