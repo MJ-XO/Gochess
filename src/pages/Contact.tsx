@@ -21,12 +21,41 @@ const Contact = () => {
     message: '',
   });
 
+  const [errors, setErrors] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: '',
+  });
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
+    if (errors[e.target.id]) {
+      setErrors({ ...errors, [e.target.id]: '' });
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors = {}  ;
+    
+    if (!formData.firstName.trim()) newErrors.firstName = 'First name is required';
+    if (!formData.lastName.trim()) newErrors.lastName = 'Last name is required';
+    if (!formData.email.trim()) newErrors.email = 'Email is required';
+    else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Email is invalid';
+    if (!formData.phone.trim()) newErrors.phone = 'Phone number is required';
+    if (!formData.subject.trim()) newErrors.subject = 'Subject is required';
+    if (!formData.message.trim()) newErrors.message = 'Message is required';
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!validateForm()) return;
 
     try {
       await addDoc(collection(db, 'contacts'), {
@@ -131,27 +160,32 @@ const Contact = () => {
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div>
                         <label htmlFor="firstName" className="block text-sm font-medium mb-1">First Name</label>
-                        <Input id="firstName" value={formData.firstName} onChange={handleChange} placeholder="Enter your first name" />
+                        <Input id="firstName" value={formData.firstName} onChange={handleChange} placeholder="Enter your first name" className={errors.firstName ? 'border-red-500' : ''}/>
+                        {errors.firstName && <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>}
                       </div>
                       <div>
                         <label htmlFor="lastName" className="block text-sm font-medium mb-1">Last Name</label>
-                        <Input id="lastName" value={formData.lastName} onChange={handleChange} placeholder="Enter your last name" />
+                        <Input id="lastName" value={formData.lastName} onChange={handleChange} placeholder="Enter your last name" className={errors.lastName ? 'border-red-500' : ''} />
+                        {errors.lastName && <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>}
                       </div>
                     </div>
 
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium mb-1">Email</label>
-                      <Input id="email" type="email" value={formData.email} onChange={handleChange} placeholder="Enter your email" />
+                      <Input id="email" type="email" value={formData.email} onChange={handleChange} placeholder="Enter your email" className={errors.email ? 'border-red-500' : ''} />
+                      {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
                     </div>
 
                     <div>
                       <label htmlFor="phone" className="block text-sm font-medium mb-1">Phone Number</label>
-                      <Input id="phone" value={formData.phone} onChange={handleChange} placeholder="Enter your phone number" />
+                      <Input id="phone" value={formData.phone} onChange={handleChange} placeholder="Enter your phone number" className={errors.phone ? 'border-red-500' : ''} />
+                      {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
                     </div>
 
                     <div>
                       <label htmlFor="subject" className="block text-sm font-medium mb-1">Subject</label>
-                      <Input id="subject" value={formData.subject} onChange={handleChange} placeholder="What is this regarding?" />
+                      <Input id="subject" value={formData.subject} onChange={handleChange} placeholder="What is this regarding?" className={errors.subject ? 'border-red-500' : ''} />
+                      {errors.subject && <p className="text-red-500 text-sm mt-1">{errors.subject}</p>}
                     </div>
 
                     <div>
@@ -162,7 +196,9 @@ const Contact = () => {
                         onChange={handleChange} 
                         placeholder="Please provide details about your inquiry" 
                         rows={6}
+                        className={errors.message ? 'border-red-500' : ''}
                       />
+                      {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
                     </div>
 
                     <Button type="submit" className="w-full bg-chess-primary hover:bg-chess-secondary">

@@ -62,7 +62,7 @@ const StrategicAdvantage = () => {
           <div className="relative">
             <div className="bg-chess-primary/10 rounded-lg p-8 relative z-10">
               <blockquote className="text-xl md:text-2xl font-semibold italic text-gray-800">
-                "Chess doesn't just build focus and analytical thinking—it fundamentally reshapes how you approach problems in your career and life."
+                "Chess is not just a game. It's a way of learning how to think. The skills developed on the board last a lifetime."
               </blockquote>
               <div className="mt-6">
                 <p className="font-bold">Vikram Sharma</p>

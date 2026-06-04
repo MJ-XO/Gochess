@@ -6,23 +6,20 @@ import { Star, Quote } from 'lucide-react';
 
 const testimonials = [
   {
-    name: "Arjun Mehta",
-    role: "From 1200 to 1850 ELO in 8 months",
-    image: "https://images.unsplash.com/photo-1531384441138-2736e62e0919?q=80&w=100&auto=format&fit=crop",
+    name: "",
+    role: "",
     text: "The structured approach and personalized feedback transformed my game completely. The mental models I've learned apply not just to chess but to my business decisions too.",
-    rating: 5
+    rating: 4
   },
   {
-    name: "Priya Shah",
-    role: "Won National Junior Championship",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=100&auto=format&fit=crop",
+    name: "",
+    role: "",
     text: "We've seen such a boost in confidence ever since our son started learning chess here. It's not just about the game — it's helping him focus better in school too",
     rating: 5
   },
   {
-    name: "Rahul Khanna",
-    role: "FIDE rating improved by 350 points",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=100&auto=format&fit=crop",
+    name: "",
+    role: "",
     text: "The focused programs and elite coaching helped me break through plateaus I'd been stuck at for years. The analytical frameworks have changed how I approach problems.",
     rating: 5
   }

@@ -49,12 +49,6 @@ const Institutions = () => {
                 </div>
               ))}
             </div>
-            
-            <Link to="/our-tutors">
-              <Button size="lg" className="bg-chess-primary hover:bg-chess-secondary">
-                Hire a Tutor
-              </Button>
-            </Link>
           </div>
           
           <div className="bg-white p-8 rounded-lg shadow-lg border chess-gradient">
@@ -91,13 +85,6 @@ const Institutions = () => {
                 <span>Position your institution as innovative and forward-thinking</span>
               </li>
             </ul>
-            
-            <div className="bg-gray-50 p-4 rounded-lg mt-6">
-              <p className="text-sm italic text-gray-600">
-                "The chess program has been a tremendous addition to our curriculum. Students show improved focus in other subjects too."
-              </p>
-              <p className="text-sm font-semibold mt-2">- Principal, Delhi Public School</p>
-            </div>
           </div>
         </div>
       </div>

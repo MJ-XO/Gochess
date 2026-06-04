@@ -30,9 +30,9 @@ const Hero = () => {
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
-            <Link to="/our-tutors">
+            <Link to="/tutors">
               <Button size="lg" variant="outline" className="border-gochess-blue text-gochess-blue hover:bg-gochess-blue hover:text-white hover:bg-black text-lg">
-                Meet Our Expert Coaches
+                Become a Tutor
               </Button>
             </Link>
           </div>

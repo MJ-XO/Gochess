@@ -82,13 +82,6 @@ const Programs = () => {
               Our structured learning paths are designed for players at every level, focusing on strategic growth and measurable outcomes.
             </p>
           </div>
-          
-          <Link to="/our-tutors" className="mt-6 md:mt-0">
-            <Button variant="outline" className="border-chess-primary text-chess-primary group">
-              Meet Our Expert Coaches
-              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </Link>
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">

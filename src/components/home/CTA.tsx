@@ -25,15 +25,15 @@ const CTA = () => {
           
           <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-3xl font-bold">500+</div>
-              <div className="text-white/70">Active Students</div>
+              <div className="text-3xl font-bold">200+</div>
+              <div className="text-white/70">Students Mentored</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold">10+</div>
+              <div className="text-3xl font-bold">40+</div>
               <div className="text-white/70">Expert Coaches</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold">30K+</div>
+              <div className="text-3xl font-bold">15K+</div>
               <div className="text-white/70">Coaching Hours</div>
             </div>
             <div className="text-center">

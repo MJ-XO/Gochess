@@ -25,9 +25,36 @@ const Tutors = () => {
     aboutYou: ''
   });
 
+  const [errors, setErrors] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    experience: '',
+    aboutYou: ''
+  });
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target;
     setFormData((prev) => ({ ...prev, [id]: value }));
+    if (errors[id]) {
+      setErrors((prev) => ({ ...prev, [id]: '' }));
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors: any = {};
+    
+    if (!formData.firstName.trim()) newErrors.firstName = 'First name is required';
+    if (!formData.lastName.trim()) newErrors.lastName = 'Last name is required';
+    if (!formData.email.trim()) newErrors.email = 'Email is required';
+    else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Email is invalid';
+    if (!formData.phone.trim()) newErrors.phone = 'Phone number is required';
+    if (!formData.experience.trim()) newErrors.experience = 'Years of experience is required';
+    if (!formData.aboutYou.trim()) newErrors.aboutYou = 'Please tell us about yourself';
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -59,6 +86,9 @@ const Tutors = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+
+    if (!validateForm()) return;
+
     try {
       await addDoc(collection(db, 'tutor_applications'), {
         ...formData,
@@ -176,22 +206,26 @@ const Tutors = () => {
                       <div className="grid md:grid-cols-2 gap-4">
                         <div>
                           <label htmlFor="firstName" className="block text-sm font-medium mb-1">First Name</label>
-                          <Input id="firstName" value={formData.firstName} onChange={handleChange} placeholder="Enter your first name" />
+                          <Input id="firstName" value={formData.firstName} onChange={handleChange} placeholder="Enter your first name" className={errors.firstName ? 'border-red-500' : ''} />
+                          {errors.firstName && <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>}
                         </div>
                         <div>
                           <label htmlFor="lastName" className="block text-sm font-medium mb-1">Last Name</label>
-                          <Input id="lastName" value={formData.lastName} onChange={handleChange} placeholder="Enter your last name" />
+                          <Input id="lastName" value={formData.lastName} onChange={handleChange} placeholder="Enter your last name" className={errors.lastName ? 'border-red-500' : ''} />
+                          {errors.lastName && <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>}
                         </div>
                       </div>
 
                       <div>
                         <label htmlFor="email" className="block text-sm font-medium mb-1">Email</label>
-                        <Input id="email" type="email" value={formData.email} onChange={handleChange} placeholder="Enter your email" />
+                        <Input id="email" type="email" value={formData.email} onChange={handleChange} placeholder="Enter your email" className={errors.email ? 'border-red-500' : ''} />
+                        {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
                       </div>
 
                       <div>
                         <label htmlFor="phone" className="block text-sm font-medium mb-1">Phone Number</label>
-                        <Input id="phone" value={formData.phone} onChange={handleChange} placeholder="Enter your phone number" />
+                        <Input id="phone" value={formData.phone} onChange={handleChange} placeholder="Enter your phone number" className={errors.phone ? 'border-red-500' : ''} />
+                        {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
                       </div>
 
                       <div>
@@ -201,7 +235,8 @@ const Tutors = () => {
 
                       <div>
                         <label htmlFor="experience" className="block text-sm font-medium mb-1">Years of Experience</label>
-                        <Input id="experience" type="number" value={formData.experience} onChange={handleChange} placeholder="Years of playing/teaching" />
+                        <Input id="experience" type="number" value={formData.experience} onChange={handleChange} placeholder="Years of playing/teaching" className={errors.experience ? 'border-red-500' : ''} />
+                        {errors.experience && <p className="text-red-500 text-sm mt-1">{errors.experience}</p>}
                       </div>
 
                       <div>
@@ -212,7 +247,9 @@ const Tutors = () => {
                           onChange={handleChange} 
                           placeholder="Share your chess journey, teaching experience, and why you want to join GoChess" 
                           rows={4}
+                          className={errors.aboutYou ? 'border-red-500' : ''}
                         />
+                        {errors.aboutYou && <p className="text-red-500 text-sm mt-1">{errors.aboutYou}</p>}
                       </div>
 
                       <div>
@@ -261,8 +298,8 @@ const Tutors = () => {
                     "Joining GoChess has transformed my teaching career. The flexible schedule allows me to balance coaching with my tournament play, and the platform makes it easy to connect with motivated students."
                   </p>
                   <div>
-                    <p className="font-semibold">Anand K.</p>
-                    <p className="text-sm text-gray-500">FIDE Master, Teaching for 3 years</p>
+                    <p className="font-semibold"></p>
+                    <p className="text-sm text-gray-500"></p>
                   </div>
                 </div>
               </Card>
@@ -273,8 +310,8 @@ const Tutors = () => {
                     "As someone passionate about chess education, GoChess has been the perfect platform. The teaching resources are excellent, and the staff is always supportive of our needs."
                   </p>
                   <div>
-                    <p className="font-semibold">Priya M.</p>
-                    <p className="text-sm text-gray-500">National Instructor, Teaching for 5 years</p>
+                    <p className="font-semibold"></p>
+                    <p className="text-sm text-gray-500"></p>
                   </div>
                 </div>
               </Card>
@@ -285,8 +322,8 @@ const Tutors = () => {
                     "The institutional placements through GoChess have provided me with stable teaching opportunities at schools. It's rewarding to introduce chess to young minds and watch them grow."
                   </p>
                   <div>
-                    <p className="font-semibold">Rajiv S.</p>
-                    <p className="text-sm text-gray-500">Chess Coach, Teaching for 7 years</p>
+                    <p className="font-semibold"></p>
+                    <p className="text-sm text-gray-500"></p>
                   </div>
                 </div>
               </Card>
