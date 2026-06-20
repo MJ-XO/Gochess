@@ -59,9 +59,9 @@ const Navbar = () => {
             Join as student
           </Link> 
 
-          <Button variant="outline" className="border-gochess-orange text-gochess-orange hover:bg-gochess-orange hover:text-white hover:bg-black  text-base font-inter" onClick={()=>{window.open("https://phantom-chess-56mz.vercel.app/dashboard","_blank")}}>
+          <Button variant="outline" className="border-gochess-orange text-gochess-orange hover:bg-gochess-orange hover:text-white hover:bg-black  text-base font-inter" onClick={()=>{window.open("https://gochess-dna.onrender.com/","_blank")}}>
             <Gamepad2 className="mr-2 h-4 w-4" />
-            Play Chess Variants
+            Know Your Chess DNA
           </Button>
           
         </div>
@@ -117,11 +117,11 @@ const Navbar = () => {
               About Us
             </Link>
             <Link 
-              to="/our-tutors" 
+              to="/student-registration" 
               className="font-medium py-2 hover:text-gochess-orange transition-colors font-inter text-base"
               onClick={toggleMenu}
             >
-              Our Tutors
+              Join as a student
             </Link>
             <Link 
               to="/contact" 
@@ -140,10 +140,11 @@ const Navbar = () => {
             <Button 
               variant="outline" 
               className="border-gochess-orange text-gochess-orange hover:bg-gochess-orange hover:text-white w-full font-inter"
-              onClick={toggleMenu}
+              onClick={()=>{window.open("https://gochess-dna.onrender.com/","_blank")}}
+              
             >
               <Gamepad2 className="mr-2 h-4 w-4" />
-              Play Chess Variants
+              Know Your Chess DNA
             </Button>
             <Link 
               to="/student-registration" 

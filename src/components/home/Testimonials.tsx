@@ -6,9 +6,9 @@ import { Star, Quote } from 'lucide-react';
 
 const testimonials = [
   {
-    name: "",
+    name: "-Aditi's Mom, Deepika",
     role: "",
-    text: "The structured approach and personalized feedback transformed my game completely. The mental models I've learned apply not just to chess but to my business decisions too.",
+    text: "We are happy with Aisha's experience at GoChess. The bi-weekly classes with Ms.Aditi have been engaging and effective, helping her improve her chess skills and confidence. We appreciate the oppurtunities to play on the Lichess platform and gain practical experience. Thank you to Ms.Tanisha - Founder of GoChess and Ms.Aditi for creating such a postive learning environment. We highly recommend GoChess to young chess learners.",
     rating: 4
   },
   {
@@ -50,11 +50,7 @@ const Testimonials = () => {
               </div>
               
               <div className="flex items-center mt-6">
-                <img 
-                  src={testimonial.image} 
-                  alt={testimonial.name}
-                  className="w-12 h-12 rounded-full object-cover mr-4"
-                />
+                
                 <div>
                   <h4 className="font-semibold">{testimonial.name}</h4>
                   <p className="text-sm text-chess-primary">{testimonial.role}</p>
