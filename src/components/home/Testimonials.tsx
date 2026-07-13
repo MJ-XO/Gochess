@@ -12,15 +12,15 @@ const testimonials = [
     rating: 4
   },
   {
-    name: "",
+    name: "Adhiraj's Mom, Avantika",
     role: "",
-    text: "We've seen such a boost in confidence ever since our son started learning chess here. It's not just about the game — it's helping him focus better in school too",
+    text: "We've seen such a boost in confidence ever since our son started learning chess here. It's not just about the game — it's helping him focus better in school too. He's in best hands and. It was my best decision to go ahead with your classes.",
     rating: 5
   },
   {
-    name: "",
+    name: "Rajesh's Dad, Ankul",
     role: "",
-    text: "The focused programs and elite coaching helped me break through plateaus I'd been stuck at for years. The analytical frameworks have changed how I approach problems.",
+    text: "My son has really enjoyed learning chess here. The coaches are patient and explain things in a way kids understand. He's become much more confident and actually looks forward to practice every week. Overall we've had a good experience.",
     rating: 5
   }
 ];
