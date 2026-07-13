@@ -295,11 +295,11 @@ const Tutors = () => {
               <Card className="p-6">
                 <div className="space-y-4">
                   <p className="italic text-gray-600">
-                    "Joining GoChess has transformed my teaching career. The flexible schedule allows me to balance coaching with my tournament play, and the platform makes it easy to connect with motivated students."
+                    "It has been a great experience working at GoChess. As an engineering student having this part time job has been very convenient because of the flexible schedule, which helps me balance my studies and work. The staff is friendly supportive and always willing to help whenever needed. I also appreciate that the salary is always paid on time. Overall it's been a positive experiencen and I am grateful to be a part of the team."
                   </p>
                   <div>
-                    <p className="font-semibold"></p>
-                    <p className="text-sm text-gray-500"></p>
+                    <p className="font-semibold">-Yogaraj </p>
+                    <p className="text-sm text-gray-500">International Fide Player</p>
                   </div>
                 </div>
               </Card>
@@ -307,11 +307,11 @@ const Tutors = () => {
               <Card className="p-6">
                 <div className="space-y-4">
                   <p className="italic text-gray-600">
-                    "As someone passionate about chess education, GoChess has been the perfect platform. The teaching resources are excellent, and the staff is always supportive of our needs."
+                    "It's been a truly rewarding two years coaching at Gochess. I've had the opportunity to mentor over 5 individual students and many group classes, guiding them through personalized improvement plans, and have run numerous group classes that helped build a strong sense of community and healthy competition among the students. Watching them grow both in rating and in their love for the game has been the most fulfilling part of this journey. I'm grateful for the platform and trust Gochess has given me to develop as a coach, and I'm looking forward to contributing even more in the seasons ahead"
                   </p>
                   <div>
-                    <p className="font-semibold"></p>
-                    <p className="text-sm text-gray-500"></p>
+                    <p className="font-semibold">-Abhilash Dandu</p>
+                    <p className="text-sm text-gray-500">University Blue</p>
                   </div>
                 </div>
               </Card>
