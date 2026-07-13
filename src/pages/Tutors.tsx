@@ -298,8 +298,8 @@ const Tutors = () => {
                     "It has been a great experience working at GoChess. As an engineering student having this part time job has been very convenient because of the flexible schedule, which helps me balance my studies and work. The staff is friendly supportive and always willing to help whenever needed. I also appreciate that the salary is always paid on time. Overall it's been a positive experiencen and I am grateful to be a part of the team."
                   </p>
                   <div>
-                    <p className="font-semibold">-Yogaraj </p>
-                    <p className="text-sm text-gray-500">International Fide Player</p>
+                    <p className="font-semibold">-Yogaraj Mahale</p>
+                    <p className="text-sm text-gray-500">-International Fide Player</p>
                   </div>
                 </div>
               </Card>
@@ -311,7 +311,7 @@ const Tutors = () => {
                   </p>
                   <div>
                     <p className="font-semibold">-Abhilash Dandu</p>
-                    <p className="text-sm text-gray-500">University Blue</p>
+                    <p className="text-sm text-gray-500">-University Blue</p>
                   </div>
                 </div>
               </Card>
@@ -319,11 +319,12 @@ const Tutors = () => {
               <Card className="p-6">
                 <div className="space-y-4">
                   <p className="italic text-gray-600">
-                    "The institutional placements through GoChess have provided me with stable teaching opportunities at schools. It's rewarding to introduce chess to young minds and watch them grow."
+                    "Coaching at Gochess over the past two years has been an amazing experience. During this time, I've worked closely with several one-on-one students while also leading many group classes, each bringing its own unique challenges and rewarding moments. Seeing students gain confidence, improve their ratings, and genuinely enjoy learning chess has been the highlight of my journey. I'm thankful to Gochess for giving me the opportunity to grow as a coach and for trusting me with the development of so many young players. I'm excited to continue helping more students reach their potential in the years to come.
+"
                   </p>
                   <div>
-                    <p className="font-semibold"></p>
-                    <p className="text-sm text-gray-500"></p>
+                    <p className="font-semibold">-Bhagyashree G Patil</p>
+                    <p className="text-sm text-gray-500">-Commonwealth chess player</p>
                   </div>
                 </div>
               </Card>
