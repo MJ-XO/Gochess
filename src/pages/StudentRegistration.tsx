@@ -62,7 +62,7 @@ const StudentRegistration = () => {
                     name="firstName"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel> Name</FormLabel>
+                        <FormLabel>First Name</FormLabel>
                         <FormControl>
                           <Input placeholder="Enter first name" {...field} />
                         </FormControl>
