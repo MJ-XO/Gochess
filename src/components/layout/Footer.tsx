@@ -70,11 +70,7 @@ const Footer = () => {
                   Career-Oriented Coaching
                 </Link>
               </li>
-              <li>
-                <Link to="/our-tutors" className="text-gray-300 hover:text-chess-secondary transition-colors">
-                  For Institutionss
-                </Link>
-              </li>
+          
             </ul>
           </div>
         </div>
