@@ -42,11 +42,7 @@ const Footer = () => {
                   About Us
                 </Link>
               </li>
-              <li>
-                <Link to="/tutors" className="text-gray-300 hover:text-chess-secondary transition-colors">
-                  Become a Tutor
-                </Link>
-              </li>
+         
               <li>
                 <Link to="/contact" className="text-gray-300 hover:text-chess-secondary transition-colors">
                   Contact Us
